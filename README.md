@@ -16,7 +16,7 @@ Tokens must be pre-registered in the SQLite database. Unauthorized tokens will b
 
 ---
 
-## 🔑 1. Add Token (Manual Setup)
+## 🔑 1.client
 
 To authorize users, insert tokens into the database like so:
 
@@ -50,6 +50,35 @@ if __name__ == "__main__":
         response = chat(token, question)
         if response:
             print("AI:", response['bot']['description'])
+```
+
+## 🔑 1.get token 
+
+```
+import requests
+
+API_URL = "https://apishniki.pythonanywhere.com"
+REGISTER_URL = f"{API_URL}/register"
+
+def register_token():
+    res = requests.post(REGISTER_URL)
+    if res.status_code == 200:
+        token = res.json()["token"]
+        print(f"✅ your token is: {token}")
+        return token
+    else:
+        print(f"❌ error: {res.text}")
+        return None
+
+def main():
+    print("🚀 creating new user...")
+    token = register_token()
+    if not token:
+        return
+
+if __name__ == "__main__":
+    main()
+
 ```
 ## 📸 Interface Preview
 
