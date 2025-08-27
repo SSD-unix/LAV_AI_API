@@ -52,7 +52,7 @@ if __name__ == "__main__":
             print("AI:", response['bot']['description'])
 ```
 
-## 🔑 1.get token 
+## 🔑 2.get token 
 
 ```
 import requests
